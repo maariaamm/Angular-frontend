@@ -1,1 +1,20 @@
-{{ title }}
+<div class="max-w-4xl mx-auto p-4">
+    <img src="https://hips.hearstapps.com/hmg-prod/images/2022-porsche-macan-101-1651084695.jpg?crop=0.574xw:0.483xh;0.327xw,0.358xh&resize=1200:*" alt="Car Image" class="mb-4 rounded-lg shadow-md">
+</div>
+
+<div *ngIf="(carsAd | async)?.length === 0" class="text-center text-gray-500 mt-10">
+    No car advertisements available.
+</div>
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-4 max-w-7xl mx-auto">
+@for (item of (carsAd | async); track item._id) {
+    <div class="mb-6 p-4 border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+        <p class="text-2xl font-bold text-center">{{ item.model }} ({{ item.year }})</p>
+        <img src="{{ item.imageUrl }}" alt="Car Image" class="w-full object-cover mt-2 mb-4 rounded-lg shadow-md">
+        <p><span class="font-semibold">Brand:</span> {{ item.brand }}</p>
+        <p><span class="font-semibold">Price:</span> {{ item.price }}kr</p>
+        <p><span class="font-semibold">Description:</span> {{ item.description }}</p>
+        <p><span class="font-semibold">fuelType:</span> {{ item.fuelType }}</p>
+    </div>
+}
+</div>

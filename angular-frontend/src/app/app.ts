@@ -1,6 +1,6 @@
 import { Component, signal, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from './componentes/header/header';
+import { Header } from './components/header/header';
 
 @Component({
   selector: 'app-root',
