@@ -15,6 +15,9 @@
         <p><span class="font-semibold">Price:</span> {{ item.price }}kr</p>
         <p><span class="font-semibold">Description:</span> {{ item.description }}</p>
         <p><span class="font-semibold">fuelType:</span> {{ item.fuelType }}</p>
+        <div class="flex justify-center">
+            <a [routerLink]="['/ad-details', item._id]" class="inline-block mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300">View Details</a>
+        </div>
     </div>
 }
 </div>

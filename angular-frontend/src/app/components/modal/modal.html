@@ -1,0 +1,12 @@
+<div class="modal-backdrop" *ngIf="modalService.modalVisible()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+    <header class="modal-header">
+        <button class="close-btn" (click)="close()">✖</button>
+    </header>
+    <div class="modal-body flex justify-center items-center">
+        <ng-content></ng-content>
+    </div>
+    </div>
+</div>
+
+{{ modalService.modalVisible() }}

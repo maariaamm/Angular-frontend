@@ -3,4 +3,9 @@
 
 <router-outlet />
 
-<h2 class="font-bold text-3xl">Something</h2>
+<button (click)="showLoginForm()">Open Modal</button>
+
+<app-modal>
+    <app-login-form *ngIf="modalService.showModal() == 'login'"></app-login-form>
+    <div *ngIf="isLoggedIn()">Welcome back, user!</div>
+</app-modal>
