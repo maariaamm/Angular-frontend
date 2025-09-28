@@ -23,6 +23,7 @@ export class LoginForm {
   async onSubmit(form?: NgForm) {
     if (form?.valid) {
       await this.authService.login(this.username, this.password);
+      this.modalService.closeModal();
       this.router.navigate(['/']);
     } else {
       console.log('Form is invalid');

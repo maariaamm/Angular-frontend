@@ -5,14 +5,7 @@ import { AdDetail } from './pages/ad-detail/ad-detail';
 import AuthData from './models/AuthData';
 import { AuthService } from './services/auth-service';
 import { AuthGuard } from './guards/auth-guard';
-
-export const userResolver: ResolveFn<AuthData | undefined> = (route) => {
-  const authService = inject(AuthService);
-  if (!authService.authData()) {
-    throw new Error('unauthorized');
-  }
-  return authService.authData()
-};
+import { AddAd } from './pages/add-ad/add-ad';
 
 export const routes: Routes = [
   {
@@ -35,7 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'create-ad',
-    component: Index,
+    component: AddAd,
     canActivate: [AuthGuard]
   },
 ];

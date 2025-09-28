@@ -1,7 +1,7 @@
 
 
 
-export default interface LoginResponse {
+export default interface AuthData {
     message: 'Login successful!',
     token: string, 
     user: {

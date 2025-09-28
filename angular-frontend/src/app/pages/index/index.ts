@@ -27,15 +27,13 @@ export class Index {
   title = "Car web site"
 
   constructor(private router: Router) {
-    // this.activatedRoute.
-    console.log("Index component initialized", this.router.getCurrentNavigation()?.extras.state);
-    // if (this.router.getCurrentNavigation()?.extras.state?.['errorMessage']) {
-    //   this.modalService.openErrorModal(this.router.getCurrentNavigation()?.extras.state?.['errorMessage']);
-    // }
-
     this.activatedRoute.queryParams.subscribe(params => {
       if (params['errorMessage']) {
         this.modalService.openErrorModal(params['errorMessage']);
+        this.router.navigate([], {
+          queryParams: { errorMessage: null },
+          queryParamsHandling: 'merge'
+        });
       }
     });
 
