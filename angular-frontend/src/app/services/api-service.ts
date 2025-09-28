@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import CarAd from '../models/CarAd';
-import LoginResponse from '../models/LoginResponse';
+import AuthData from '../models/AuthData';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,13 @@ export class ApiService {
   }
 
   login(username: string, password: string) {
-    let authData = this.http.post<LoginResponse>("https://u05-restful-api-4.onrender.com/api/users/login", {username, password});
+    let authData = this.http.post<AuthData>("https://u05-restful-api-4.onrender.com/api/users/login", {username, password});
+
+    return authData;
+  }
+
+  signup(username: string, email: string, password: string) {
+    let authData = this.http.post<AuthData>("https://u05-restful-api-4.onrender.com/api/users/register", {username, email, password});
 
     return authData;
   }

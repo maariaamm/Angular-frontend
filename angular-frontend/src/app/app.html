@@ -3,9 +3,11 @@
 
 <router-outlet />
 
-<button (click)="showLoginForm()">Open Modal</button>
-
 <app-modal>
     <app-login-form *ngIf="modalService.showModal() == 'login'"></app-login-form>
-    <div *ngIf="isLoggedIn()">Welcome back, user!</div>
+    <app-signup-form *ngIf="modalService.showModal() == 'signup'"></app-signup-form>
+    <div *ngIf="modalService.showModal() == 'unauthorized'">
+        <h2 class="text-2xl font-bold mb-4 text-center">Unauthorized Access</h2>
+        <p class="text-center mb-4">You must be logged in to access this page.</p>
+    </div>
 </app-modal>

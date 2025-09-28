@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { ApiService } from './api-service'
-import LoginResponse from '../models/LoginResponse';
+import AuthData from '../models/AuthData';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class AuthService {
   isLoggedInSignal = signal<boolean>(false);
-  authData = signal<LoginResponse | undefined>(undefined);
+  authData = signal<AuthData | undefined>(undefined);
 
   constructor(private apiService: ApiService) {
     const authData = localStorage.getItem("auth_data");
@@ -19,7 +19,20 @@ export class AuthService {
   async login(username: string, password: string) {
     const authData = this.apiService.login(username, password);
 
-    this.authData.set(await toSignal(authData)());
+    this.authData.set(await authData.toPromise());
+    this.isLoggedInSignal.set(true);
+    localStorage.setItem("auth_data", JSON.stringify(this.authData()));
+  }
+
+  async logout() {
+    this.authData.set(undefined);
+    this.isLoggedInSignal.set(false);
+    localStorage.removeItem("auth_data");
+  }
+
+  async signup(username: string, email: string, password: string) {
+    const authData = this.apiService.signup(username, email, password);
+    this.authData.set(await authData.toPromise());
     this.isLoggedInSignal.set(true);
     localStorage.setItem("auth_data", JSON.stringify(this.authData()));
   }

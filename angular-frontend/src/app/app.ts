@@ -6,10 +6,11 @@ import { Modal } from './components/modal/modal';
 import { AuthService } from './services/auth-service';
 import { CommonModule } from '@angular/common';
 import { ModalService } from './services/modal-service';
+import { SignupForm } from './components/signup-form/signup-form';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Modal, LoginForm, CommonModule],
+  imports: [RouterOutlet, Header, Modal, LoginForm, SignupForm, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
   encapsulation: ViewEncapsulation.None,

@@ -3,26 +3,31 @@ import { NgForm, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth-service';
 import { Router } from '@angular/router';
-import { RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router'
 import { ModalService } from '../../services/modal-service';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-signup-form',
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './login-form.html',
-  styleUrl: './login-form.css'
+  templateUrl: './signup-form.html',
+  styleUrl: './signup-form.css'
 })
-export class LoginForm {
-  authService = inject(AuthService);
+export class SignupForm {
+authService = inject(AuthService);
   private router = inject(Router);
   modalService = inject(ModalService);
 
   username = '';
   password = '';
+  email = '';
 
   async onSubmit(form?: NgForm) {
     if (form?.valid) {
-      await this.authService.login(this.username, this.password);
+      console.log('Form Submitted!');
+      console.log('Username:', this.username);
+      console.log('Email:', this.email);
+      console.log('Password:', this.password);
+      await this.authService.signup(this.username, this.email, this.password);
       this.router.navigate(['/']);
     } else {
       console.log('Form is invalid');

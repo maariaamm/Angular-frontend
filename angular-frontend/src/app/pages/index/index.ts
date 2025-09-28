@@ -1,7 +1,7 @@
 import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { ApiService } from '../../services/api-service';
 import { CommonModule, AsyncPipe } from '@angular/common'
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../../services/modal-service';
@@ -26,10 +26,25 @@ export class Index {
 
   title = "Car web site"
 
-  constructor() {
+  constructor(private router: Router) {
+    // this.activatedRoute.
+    console.log("Index component initialized", this.router.getCurrentNavigation()?.extras.state);
+    // if (this.router.getCurrentNavigation()?.extras.state?.['errorMessage']) {
+    //   this.modalService.openErrorModal(this.router.getCurrentNavigation()?.extras.state?.['errorMessage']);
+    // }
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['errorMessage']) {
+        this.modalService.openErrorModal(params['errorMessage']);
+      }
+    });
+
     this.activatedRoute.data.subscribe(data => {
       if (data['login']) {
         this.modalService.openLoginModal();
+      }
+      if (data['signup']) {
+        this.modalService.openSignupModal();
       }
     })
   }
