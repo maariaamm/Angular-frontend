@@ -56,5 +56,22 @@ export class ApiService {
     return newCarAd;
   }
 
+  deleteAd(id: string, token: string) : Observable<any> {
+    let response = this.http.delete<any>(`https://u05-restful-api-4.onrender.com/api/carAds/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  }
+
+  updateAd(id: string, ad: CreateAdDTO, token: string) : Observable<CarAd> {
+    let updatedCarAd = this.http.put<CarAd>(`https://u05-restful-api-4.onrender.com/api/carAds/${id}`, ad, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return updatedCarAd;
+  }
 
 }

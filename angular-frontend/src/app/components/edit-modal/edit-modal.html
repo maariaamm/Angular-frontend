@@ -1,0 +1,32 @@
+<h2 class="text-2xl font-bold mb-4 text-center">Edit Ad</h2>
+<form (ngSubmit)="onSubmit(adForm)" #adForm="ngForm" class="max-w-lg mx-auto p-4 border rounded">
+  <div class="mb-4">
+    <label for="brand" class="block text-sm font-medium mb-1">Brand</label>
+    <input type="text" id="brand" name="brand" [(ngModel)]="brand" required class="w-full border rounded px-3 py-2">
+  </div>
+  <div class="mb-4">
+    <label for="model" class="block text-sm font-medium mb-1">Model</label>
+    <input type="text" id="model" name="model" [(ngModel)]="model" required class="w-full border rounded px-3 py-2">
+  </div>
+  <div class="mb-4">
+    <label for="description" class="block text-sm font-medium mb-1">Description</label>
+    <textarea id="description" name="description" [(ngModel)]="description" required class="w-full border rounded px-3 py-2"></textarea>
+  </div>
+  <div class="mb-4">
+    <label for="year" class="block text-sm font-medium mb-1">Year</label>
+    <input type="number" id="year" name="year" [(ngModel)]="year" required class="w-full border rounded px-3 py-2">
+  </div>
+  <div class="mb-4">
+    <label for="fuelType" class="block text-sm font-medium mb-1">Fuel Type</label>
+    <input type="text" id="fuelType" name="fuelType" [(ngModel)]="fuelType" required class="w-full border rounded px-3 py-2">
+  </div>
+  <div class="mb-4">
+    <label for="price" class="block text-sm font-medium mb-1">Price</label>
+    <input type="number" id="price" name="price" [(ngModel)]="price" required class="w-full border rounded px-3 py-2">
+  </div>
+  <div class="mb-4">
+    <label for="imageUrl" class="block text-sm font-medium mb-1">Enter Image URL</label>
+    <input type="text" id="imageUrl" name="imageUrl" [(ngModel)]="imageUrl" required class="w-full border rounded px-3 py-2">
+  </div>
+  <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Update Ad</button>
+</form>

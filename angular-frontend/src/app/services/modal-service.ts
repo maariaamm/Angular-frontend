@@ -6,15 +6,14 @@ import { Injectable, signal } from '@angular/core';
 export class ModalService {
   modalVisible = signal(false);
   showModal = signal("");
+  data = signal<any>(null);
   
   openLoginModal() {
-    console.log("Opening login modal");
     this.showModal.set("login");
     this.modalVisible.set(true);
   }
 
   openSignupModal() {
-    console.log("Opening signup modal");
     this.showModal.set("signup");
     this.modalVisible.set(true);
   }
@@ -22,11 +21,17 @@ export class ModalService {
   closeModal() {
     this.modalVisible.set(false);
     this.showModal.set("");
+    this.data.set(null);
   }
 
   openErrorModal(message: string) {
-    console.log("Opening error modal with message:", message);
     this.showModal.set(message);
     this.modalVisible.set(true);
+  }
+
+  openEditModal(adId: string, ad$?: any) {
+    this.showModal.set("edit");
+    this.modalVisible.set(true);
+    this.data.set({ adId, ad$ });
   }
 }

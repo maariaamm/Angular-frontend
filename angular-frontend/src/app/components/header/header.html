@@ -8,24 +8,20 @@
       <nav class="hidden md:flex space-x-6">
         <a [routerLink]="['/']" class="text-gray-700 hover:text-gray-900 font-medium">Home</a>
         <a [routerLink]="['/create-ad']" class="text-gray-700 hover:text-gray-900 font-medium">Sell your car</a>
-        <a href="#" class="text-gray-700 hover:text-gray-900 font-medium">My Cars</a>
+        <a [routerLink]="['/my-cars']" class="text-gray-700 hover:text-gray-900 font-medium">My Cars</a>
       </nav>
 
       <div class="hidden md:flex">
         @if (!auth.isLoggedInSignal()) {
           <a (click)="modalService.openLoginModal()"
-             class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+             class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition">
             Sign in
           </a>
           <a (click)="modalService.openSignupModal()"
-             class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+             class="ml-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700 transition">
             Sign Up
           </a>
         } @else {
-          <a href="#"
-             class="ml-4 px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition">
-            My Profile
-          </a>
           <a (click)="logout()" [routerLink]="['/']"
              class="ml-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition">
             Logout
@@ -46,10 +42,10 @@
   </div>
 
   <div id="mobile-menu" class="md:hidden hidden px-2 pt-2 pb-3 space-y-1 bg-white shadow-md">
-    <a href="#" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">Home</a>
-    <a href="#" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">Sell your car</a>
-    <a href="#" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">My Cars</a>
-    <a href="#" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">Sign in / register</a>
-    <a href="#" class="block px-3 py-2 mt-2 bg-blue-600 text-white rounded-md text-center hover:bg-blue-700">Sign Up</a>
+    <a [routerLink]="['/']" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">Home</a>
+    <a [routerLink]="['/create-ad']" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">Sell your car</a>
+    <a [routerLink]="['/my-cars']" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">My Cars</a>
+    <a (click)="modalService.openLoginModal()" class="block px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100">Sign in</a>
+    <a (click)="modalService.openSignupModal()" class="block px-3 py-2 mt-2 bg-blue-600 text-white rounded-md text-center hover:bg-blue-700">Sign Up</a>
   </div>
 </header>

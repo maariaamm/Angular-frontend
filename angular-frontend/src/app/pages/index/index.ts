@@ -5,7 +5,7 @@ import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../../services/modal-service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import CarAd from '../../models/CarAd';
 
 @Component({
@@ -53,6 +53,29 @@ export class Index {
     } else {
       this.carsAd = this.apiClient.fetchCars();
     }
+
+    this.activatedRoute.data.subscribe(data => {
+      if (data['myCars']) {
+        if (this.apiClient.hasData()) {
+          const user = this.authService.authData()?.user;
+          this.carsAd = this.apiClient.getData()?.pipe(
+            map(cars => {
+              return cars.filter(car => car.user?._id === user?.id);
+            })
+          );
+        } else {
+          const user = this.authService.authData()?.user;
+          this.carsAd = this.apiClient.fetchCars().pipe(
+            map(cars => {
+              return cars.filter(car => car.user?._id === user?.id);
+            })
+          );
+        }
+      }
+    });
+
+
+
   }
 
 }

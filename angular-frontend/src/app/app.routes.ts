@@ -29,6 +29,12 @@ export const routes: Routes = [
   {
     path: 'create-ad',
     component: AddAd,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
+  {
+    path: 'my-cars',
+    component: Index,
+    canActivate: [AuthGuard],
+    data: { myCars: true }
+  }
 ];

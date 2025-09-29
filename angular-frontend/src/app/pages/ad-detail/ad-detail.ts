@@ -1,11 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../services/api-service';
 import { Observable, firstValueFrom } from 'rxjs';
 import CarAd from '../../models/CarAd';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { AuthService } from '../../services/auth-service';
 import { CommonModule } from '@angular/common';
+import { ModalService } from '../../services/modal-service';
 
 @Component({
   selector: 'app-ad-detail',
@@ -14,6 +15,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './ad-detail.css'
 })
 export class AdDetail {
+  private router = inject(Router);
+  modalService = inject(ModalService);
   private apiService = inject(ApiService);
   authService = inject(AuthService);
   private activatedRoute = inject(ActivatedRoute);
@@ -35,5 +38,20 @@ export class AdDetail {
       return undefined;
     }
     return this.apiService.fetchById(this.adId);
+  }
+
+  async deleteAd() {
+    const token = this.authService.authData()?.token;
+    if (!token) {
+      return;
+    }
+
+    await this.apiService.deleteAd(this.adId, token).toPromise();
+    this.apiService.fetchCars();
+    this.router.navigate(['/']);
+  }
+
+  openEditModal() {
+    this.modalService.openEditModal(this.adId, this.ad$);
   }
 }
