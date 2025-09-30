@@ -2,6 +2,17 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
 
+# Frontend web app built with angular - [CarSaales](https://carsaales.netlify.apphttps://carsaales.netlify.app) 
+
+## Features
+
+User registration and login  
+Create, view, edit, and delete car ads  
+Upload car images  
+Responsive frontend  
+Deployed backend and frontend
+
+---
 ## Development server
 
 To start a local development server, run:
