@@ -67,7 +67,10 @@ export class EditModal {
     };
 
     this.apiService.updateAd(this.adId, updatedAd, token).toPromise();
-    window.location.reload();
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
   }
 
 }

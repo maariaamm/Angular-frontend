@@ -50,4 +50,5 @@
         </div>
     </div>
     <button type="submit" [disabled]="loginForm.invalid" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 cursor-pointer">Sign Up</button>
+    <p *ngIf="errorMessage != ''" class="text-red-500 text-sm mt-1">{{errorMessage}}</p>
 </form>

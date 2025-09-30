@@ -21,10 +21,18 @@ authService = inject(AuthService);
   password = '';
   email = '';
 
+  errorMessage = '';
+
   async onSubmit(form?: NgForm) {
     if (form?.valid) {
-      await this.authService.signup(this.username, this.email, this.password);
-      this.router.navigate(['/']);
+      try {
+        await this.authService.signup(this.username, this.email, this.password)
+        this.modalService.closeModal();
+        this.router.navigate(['/']);
+      }catch(httpError:any){
+        this.errorMessage = httpError.error.message;
+        return;
+      }
     } else {
       console.log('Form is invalid');
     }
