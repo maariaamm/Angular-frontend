@@ -6,13 +6,36 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Features
 
-User registration and login  
-Create, view, edit, and delete car ads  
-Upload car images  
-Responsive frontend  
-Deployed backend and frontend
+- User registration and login  
+- Create, view, edit, and delete car ads  
+- Upload car images  
+- Responsive frontend  
+- Deployed backend and frontend
 
 ---
+## Prerequisites
+
+make sure you have the following installed:
+
+- Node.js (version 14 or higher)
+- npm (comes with Node.js)
+- Angular CLI (`npm install -g @angular/cli`)
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone [your-repository-url]
+cd angular-frontend
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
 ## Development server
 
 To start a local development server, run:
@@ -22,6 +45,29 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Building for Production
+
+To build the project for production:
+
+```bash
+ng build
+```
+
+## API Connection
+
+The application connects to a RESTful API hosted at `https://u05-restful-api-4.onrender.com`. The API endpoints include:
+
+
+| HTTP-metod     | Endpoint             | 
+|----------------|----------------------|
+| **GET**        | `/api/carAds`        |   
+| **GET**        | `/api/carAds/:id`    | 
+| **POST**       | `/api/carAds`        | 
+| **PUT**        | `/api/carAds/:id`    | 
+| **DELETE**     | `/api/carAds/:id`    | 
+
+---
 
 ## Code scaffolding
 
