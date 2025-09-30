@@ -2,7 +2,7 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.3.
 
-# Frontend web app built with angular - [CarSaales](https://carsaales.netlify.apphttps://carsaales.netlify.app) 
+# Frontend web app built with angular - [CarSaales](https://carsaales.netlify.app) 
 
 ## Features
 
